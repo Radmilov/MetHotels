@@ -1,0 +1,48 @@
+<h1>{{title}}</h1>
+<div class="row">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-3">
+<form class="form-group" (ngSubmit)="dodajHotel(forma.value)" #forma="ngForm">
+  <label for="name">Name:</label>
+  <input type="text" class="form-control" ngModel name="name">
+  <label for="capacity">Capacity:</label>
+  <input type="text" class="form-control" ngModel name="capacity">
+  <label for="price">Price:</label>
+  <input type="text" class="form-control" ngModel name="price">
+  <button type="submit" class="btn btn-primary">Dodajte hotel</button>
+</form>
+
+<input type="text" (keyup.enter)="updateFilter(filter)" #filter/>
+</div>
+<div class="col-sm-7">
+<ul class="list-group">
+<li class="list-group-item border rounded " *ngFor="let hotel of hotels | pricePipe:pipePrice">
+  <div class="container ">
+    <div class="row">
+      <div class="col-sm">
+        <img  class="img-thumbnail rounded float-right" src="https://www.fpaceforum.com/media/100x100.4555/full"/>
+      </div>
+        <div class="col-sm">
+
+  <h1>{{hotel.name }}</h1>
+      </div>
+      <div class="col-sm">
+        <h2>Capacity: {{hotel.capacity}}</h2>
+    <h3>Price: {{hotel.price}}</h3>
+
+</div>
+<div class="col-sm">
+
+<button class="btn btn-primary" (click)="deleteHotel(hotel)">Delete</button>
+</div></div></div>
+
+
+
+  </li>
+</ul>
+</div>
+<div class="col-sm-7">
+</div>
+
+</div>
